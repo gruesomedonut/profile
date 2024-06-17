@@ -1,0 +1,58 @@
+[tool.poetry]
+name = "starterkit"
+version = "0.1.0"
+description = "FastApi Starter kit"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+uvicorn = "^0.20.0"
+fastapi = "^0.95.0"
+requests = "^2.31.0"
+passlib = {extras = ["bcrypt"], version = "^1.7.2"}
+tenacity = "^8.1.0"
+pydantic = "^1.10.4"
+Jinja2 = "^3.1.2"
+psycopg2-binary = "^2.9.5"
+sqlalchemy = {extras = ["mypy"], version="^2.0.6"}
+alembic = "^1.9.0"
+SQLAlchemy-Utils = "^0.40.0"
+python-dotenv = "^0.21.0"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+python-multipart = "^0.0.6"
+email-validator = "^1.3.1"
+boto3 = "^1.26.108"
+botocore = "^1.29.109"
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.2.0"
+mypy = "^1.1.1"
+httpx = "^0.23.3"
+black = "^23.1.0"
+ruff = "^0.0.261"
+
+
+[tool.ruff]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+# Same as Black.
+line-length = 88
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+plugins = ["pydantic.mypy", "sqlalchemy.ext.mypy.plugin"]
